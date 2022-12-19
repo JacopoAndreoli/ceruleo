@@ -14,10 +14,11 @@ from ceruleo.dataset.ts_dataset import AbstractLivesDataset
 from tqdm.auto import tqdm
 
 from ceruleo.utils.download import download
+logging.getLogger().setLevel(logging.INFO)
 
 logger = logging.getLogger(__name__)
 
-DATASET_PATH = DATA_PATH / "C_MAPSS2"
+DATASET_PATH = DATA_PATH / "C_MAPSS2" 
 
 URL = "https://ti.arc.nasa.gov/c/47/"
 
@@ -66,6 +67,7 @@ class CMAPSS2PreProcessor:
         self.path = path
         self.raw_data_path = path / "data_set"
         self.lives_table_path = path / "lives_data.pkl"
+        
 
     def process_raw_dataframe(
         self, data:pd.DataFrame, file_h5: Path, i: int, unit: int, train: bool
@@ -151,6 +153,7 @@ class CMAPSS2Dataset(AbstractLivesDataset):
         path: Path = DATASET_PATH,
         train: Optional[bool] = None,
     ):
+        print("bas")
         super().__init__()
         self.path = path
         LIVES_TABLE_PATH = path / "lives_data.pkl"
@@ -175,3 +178,9 @@ class CMAPSS2Dataset(AbstractLivesDataset):
     @property
     def rul_column(self) -> str:
         return "RUL"
+
+
+class a:
+    def __init__(self, path: Path = "u"):
+        print("bas")
+        
